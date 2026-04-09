@@ -3,7 +3,7 @@
 ################################
 locals {
   # Select as many AZs as we have subnets
-  selected_azs      = slice(data.aws_availability_zones.available.names, 0, length(var.private_subnet_cidrs))
+  selected_azs = slice(data.aws_availability_zones.available.names, 0, length(var.private_subnet_cidrs))
   # For tag suffix (e.g., a/b/c from eu-west-2a/b/c)
   selected_az_suffs = [for az in local.selected_azs : substr(az, length(az) - 1, 1)]
 }
@@ -84,3 +84,4 @@ resource "aws_vpc_endpoint_route_table_association" "dynamodb" {
   vpc_endpoint_id = data.aws_vpc_endpoint.dynamodb.id
   route_table_id  = aws_route_table.private[each.key].id
 }
+

@@ -124,3 +124,4 @@ resource "aws_route" "vgw_routes_multi" {
   destination_cidr_block = each.value.cidr
   gateway_id             = aws_vpn_gateway.vpn_gateway.id
 }
+
