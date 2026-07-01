@@ -28,14 +28,14 @@ variables {
   tags = {
     Environment = "test"
   }
-  vpc_name                    = "shared-vpc"
-  environment_type            = "dev"
-  customer_gateway_ipaddress  = "203.0.113.10"
-  vpn_static_route_cidrs      = ["192.168.10.0/24", "192.168.20.0/24"]
-  private_route_table_ids     = ["rtb-aaaa1111", "rtb-bbbb2222"]
-  destination_cidr_blocks     = ["172.16.10.0/24", "172.16.20.0/24"]
-  firsvpn_secret_id           = "arn:aws:secretsmanager:eu-west-2:111111111111:secret:firsvpn"
-  remote_ipv4_network_cidr    = "172.16.0.0/16"
+  vpc_name                   = "shared-vpc"
+  environment_type           = "dev"
+  customer_gateway_ipaddress = "203.0.113.10"
+  vpn_static_route_cidrs     = ["192.168.10.0/24", "192.168.20.0/24"]
+  private_route_table_ids    = ["rtb-aaaa1111", "rtb-bbbb2222"]
+  destination_cidr_blocks    = ["172.16.10.0/24", "172.16.20.0/24"]
+  firsvpn_secret_id          = "arn:aws:secretsmanager:eu-west-2:111111111111:secret:firsvpn"
+  remote_ipv4_network_cidr   = "172.16.0.0/16"
 }
 
 run "plans_expected_firsvpn_resources" {
