@@ -56,18 +56,18 @@ resource "aws_vpn_connection" "vpn_connection" {
   tunnel1_phase2_integrity_algorithms  = ["SHA2-512"]
   tunnel2_phase2_integrity_algorithms  = ["SHA2-512"]
 
-  tunnel1_phase1_lifetime_seconds      = 28800
-  tunnel2_phase1_lifetime_seconds      = 28800
-  tunnel1_phase2_lifetime_seconds      = 3600
-  tunnel2_phase2_lifetime_seconds      = 3600
-  tunnel1_phase1_dh_group_numbers      = [21]
-  tunnel2_phase1_dh_group_numbers      = [21]
-  tunnel1_phase2_dh_group_numbers      = [21]
-  tunnel2_phase2_dh_group_numbers      = [21]
-  tunnel1_startup_action               = "start"
-  tunnel2_startup_action               = "start"
-  tunnel1_dpd_timeout_action           = "clear"
-  tunnel2_dpd_timeout_action           = "clear"
+  tunnel1_phase1_lifetime_seconds = 28800
+  tunnel2_phase1_lifetime_seconds = 28800
+  tunnel1_phase2_lifetime_seconds = 3600
+  tunnel2_phase2_lifetime_seconds = 3600
+  tunnel1_phase1_dh_group_numbers = [21]
+  tunnel2_phase1_dh_group_numbers = [21]
+  tunnel1_phase2_dh_group_numbers = [21]
+  tunnel2_phase2_dh_group_numbers = [21]
+  tunnel1_startup_action          = "start"
+  tunnel2_startup_action          = "start"
+  tunnel1_dpd_timeout_action      = "clear"
+  tunnel2_dpd_timeout_action      = "clear"
   # Use the plaintext read from Secrets Manager
   tunnel1_preshared_key = local.firsvpn.tunnel1_preshared_key
   tunnel2_preshared_key = local.firsvpn.tunnel2_preshared_key
@@ -81,10 +81,10 @@ resource "aws_vpn_connection" "vpn_connection" {
   tunnel1_replay_window_size        = 1024
   tunnel2_replay_window_size        = 1024
 
-  local_ipv4_network_cidr         = data.aws_vpc.selected.cidr_block
-  remote_ipv4_network_cidr        = "${var.remote_ipv4_network_cidr}"
+  local_ipv4_network_cidr  = data.aws_vpc.selected.cidr_block
+  remote_ipv4_network_cidr = var.remote_ipv4_network_cidr
 
-    tags = merge(
+  tags = merge(
     {
       Name = "vpn-${var.environment_type}"
     },

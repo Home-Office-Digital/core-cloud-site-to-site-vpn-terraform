@@ -3,7 +3,7 @@
 ################################
 locals {
   # Select as many AZs as we have subnets
-  selected_azs      = slice(data.aws_availability_zones.available.names, 0, length(var.private_subnet_cidrs))
+  selected_azs = slice(data.aws_availability_zones.available.names, 0, length(var.private_subnet_cidrs))
   # For tag suffix (e.g., a/b/c from eu-west-2a/b/c)
   selected_az_suffs = [for az in local.selected_azs : substr(az, length(az) - 1, 1)]
 }
